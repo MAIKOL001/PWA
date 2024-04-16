@@ -1,78 +1,59 @@
-<html>
-    <head>
-        <title>PWA</title>
-        <link rel="manifest" href="manifest.json">
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-        
-      </head>
-    <body>
-      <a-scene
-      vr-mode-ui="enabled: false;"
-      loading-screen="enabled: false;"
-      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-      id="scene"
-      embedded
-      gesture-detector
-  >
-      <a-marker
-          id="animated-marker"
-          type="pattern"
-          preset="custom"
-          url="assets/marker.patt"
-          raycaster="objects: .clickable"
-          emitevents="true"
-          cursor="fuse: false; rayOrigin: mouse;"
-          id="markerA"
-      >
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="manifest" href="manifest.json">
+  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+    }
+  </script><link rel="stylesheet" href="./style.css">
 
-      <a-image
-      src="assets/84795785-455b-497b-9513-7b893f488b84-removebg-preview.png" width="1" height="1"
-              scale="2 2 2" 
-              class="clickable"
-              rotation="-90 0 0"
-              position="-3 0 0" 
-              gesture-handler
-          ></a-image>
-      
-          <!-- Content to scale -->
-          <!-- <a-video
-              id="videoEl"
-              src="assets/1 minute funny videosmp4"
-              width="1" 
-              height="1" 
-              position="3 0 0" 
-              rotation="-90 -90 0" 
-              autoplay="false"
-              loop
-              muted
-              scale="2 2 2" 
-              scale-with-distance
-          ></a-video> -->
-      </a-marker>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<main>
+    <div class="relative flex flex-col h-[100vh] items-center justify-center bg-white dark:bg-black transition-bg">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="jumbo absolute -inset-[10px] opacity-50"></div>
+        </div>
+        <h1 class="relative flex items-center text-5xl font-bold text-gray-800 dark:text-white dark:opacity-80 transition-colors">
+            MU AR
+            <span class="ml-1 rounded-xl bg-current p-2 text-[0.7em] leading-none">
+                <span class="text-white dark:text-black">Space</span>
+            </span>
+        </h1>
+        <div class="mt-4">
+          <a href="/menu.html">
+            <button onclick="toggleTheme()" class="px-3 py-1 border border-stone-200 rounded-full drop-shadow-sm text-sm text-stone-800 dark:text-white bg-white/40 dark:bg-black/40 backdrop-blur-lg hover:border-stone-300 transition-colors dark:border-stone-500 dark:hover:border-stone-400">Start</button>
+        </a>
+          </div>
+    </div>
+</main>
 
-      <a-entity camera></a-entity>
-  </a-scene>
-    </body>
-    <script>
-        window.addEventListener('load', () => {
-          registerSW();
-        });
-     
-        // Register the Service Worker
-        async function registerSW() {
-          if ('serviceWorker' in navigator) {
-            try {
-              await navigator
-                    .serviceWorker
-                    .register('serviceworker.js');
-            }
-            catch (e) {
-              console.log('SW registration failed');
-            }
-          }
-        }
-     </script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+<script>
+  window.addEventListener('load', () => {
+    registerSW();
+  });
+
+  // Register the Service Worker
+  async function registerSW() {
+    if ('serviceWorker' in navigator) {
+      try {
+        await navigator
+              .serviceWorker
+              .register('serviceworker.js');
+      }
+      catch (e) {
+        console.log('SW registration failed');
+      }
+    }
+  }
+</script>
 </html>
