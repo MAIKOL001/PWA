@@ -1,9 +1,9 @@
 {
     "name":"MU AR",
-    "short_name":"PWA",
+    "short_name":"Augment reality",
     "start_url":"index.html",
     "display":"standalone",
-    "background_color":"#5900b3",
+    "background_color":"#000000",
     "theme_color":"black",
     "scope": ".",
     "permissions": ["camera"
