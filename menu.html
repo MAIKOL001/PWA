@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="./style2.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h1>Menu</h1>
+<div class="buttons">
+  
+  <button class="neumorphic active">
+    <i class="fa-light fa-fire"></i>
+    <a href="/index.html"> 
+    <span>Ar Scanner</span>
+  </a>
+  </button>
+
+  <button class="neumorphic">
+    <i class="fa-light fa-dna"></i>
+    <span>Button 2</span>
+  </button>
+  <button class="neumorphic">
+    <i class="fa-light fa-chart-mixed"></i>
+    <span>Button 3</span>
+  </button>
+  <button class="neumorphic">
+    <i class="fa-light fa-atom"></i>
+    <span>Button 4</span>
+  </button>
+  <button class="neumorphic">
+    <i class="fa-light fa-seedling"></i>
+    <span>Button 5</span>
+  </button>
+  <button class="neumorphic">
+    <i class="fa-light fa-disease"></i>
+    <span>Button 6</span>
+  </button>
+</div>
+<!-- partial -->
+  
+</body>
+<script>
+  window.addEventListener('load', () => {
+    registerSW();
+  });
+
+  // Register the Service Worker
+  async function registerSW() {
+    if ('serviceWorker' in navigator) {
+      try {
+        await navigator
+              .serviceWorker
+              .register('serviceworker.js');
+      }
+      catch (e) {
+        console.log('SW registration failed');
+      }
+    }
+  }
+</script>
+</html>
